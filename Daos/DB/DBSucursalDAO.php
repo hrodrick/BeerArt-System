@@ -118,7 +118,7 @@ class DBSucursalDAO extends SingletonAbstractDAO implements iDao{
 	}
 
 	function buscarId($id){
-		$ojb='';
+		$obj='';
 		$query = 'SELECT * FROM '.$this->table.' WHERE id='.$id;
 
 		$pdo = new Connection();

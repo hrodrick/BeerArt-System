@@ -199,7 +199,7 @@ class DBCervezaDAO extends SingletonAbstractDAO implements iDao{
 	}		
 
 	function buscarTipo($tipo){
-
+		$obj='';
 		$query = 'SELECT * FROM '.$this->table.' WHERE tipo='.'"'.$tipo.'"';
 
 		$pdo = new Connection();

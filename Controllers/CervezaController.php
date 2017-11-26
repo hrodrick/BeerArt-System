@@ -76,7 +76,6 @@ class CervezaController{
 
 		$thumb->loadImage(URL_IMG_CER.$foto);
 		$thumb->resize(116, 'height');
-		print($thumb->getWidth());
 		if($thumb->getWidth()>227){
 			$thumb->crop(227,116);
 		}

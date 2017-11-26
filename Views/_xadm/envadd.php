@@ -43,7 +43,7 @@
 
                       <label class="control-label col-xs-2 t_blanco" for="inputForm">Foto:&nbsp;</label>
                       <div class="col-xs-9">
-                           <input class="form-control" type="file" accept="image/jpg" name="foto">
+                           <input class="form-control" type="file" accept=".jpg" name="foto">
                            <p>&nbsp;</p>
                       </div>   
 

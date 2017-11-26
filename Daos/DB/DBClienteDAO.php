@@ -117,6 +117,39 @@ class DBClienteDAO extends SingletonAbstractDAO implements iDao{
 		return $usuarios;
 	}
 
+	function listarAll($page,$campo,$orden){
+		$usuarios = array();		
+		$page1=0;
+		if($page>0){
+			$page1 = ($page-1) * PAGINATION;
+		}
+
+		$query = 'SELECT * FROM '.$this->table.' ORDER BY '.$campo.' '.$orden.' LIMIT '.$page1.', '.PAGINATION;
+
+		$pdo = new Connection();
+		$connection = $pdo->Connect();
+		$command = $connection->prepare($query);
+		$command->execute();
+
+		$result = $command->fetchAll();
+
+		$totalCount=$this->contarClientes();
+
+		if ($totalCount) {
+		  	$countPages = $totalCount / PAGINATION;
+		  	$countPages = ceil($countPages);
+		}
+
+		foreach($result as $row)
+		{
+			$c = new Usuario($row['idRol'],$row['nombre'],$row['apellido'],$row['domicilio'],$row['localidad'],$row['telefono'],$row['dni'],$row['email'],$row['password'],$row['standBy']);
+			$c->setId($row['id']);
+
+			$usuarios[] = $c;
+		}
+		return $usuarios;
+	}
+
 	function contarCliente(){
 		$query = 'SELECT COUNT(*) FROM '.$this->table.' WHERE idRol = 0';
 		
@@ -127,6 +160,17 @@ class DBClienteDAO extends SingletonAbstractDAO implements iDao{
 		$totalCount=$total->fetchColumn();
 		return $totalCount;
 	}	
+
+	function contarClientes(){
+		$query = 'SELECT COUNT(*) FROM '.$this->table;
+		
+		$pdo = new Connection();
+		$connection = $pdo->Connect();
+		$total = $connection->prepare($query);
+		$total->execute();
+		$totalCount=$total->fetchColumn();
+		return $totalCount;
+	}
 
 	function buscarId($id){
 		$obj='';

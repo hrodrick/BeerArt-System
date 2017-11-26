@@ -56,7 +56,17 @@
             <li><a href="<?=DIR?>Envase/envadd" data-toggle="tooltip" title="Alta de Envases">Alta</a></li>
             <li><a href="<?=DIR?>Envase/listado" data-toggle="tooltip" title="Listado de Envases">Listado</a></li>         
           </ul>
-        </li>    
+        </li> 
+
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" data-toggle="tooltip" title="Control de Pedidos">Pedidos <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="<?=DIR?>Pedido/estadoPedidos" data-toggle="tooltip" title="Cambio Estado">Cambio Estado</a></li>
+            <li><a href="<?=DIR?>Pedido/listadoPorCliente" data-toggle="tooltip" title="Listados de Pedidos">Listado Por Cliente</a></li>         
+            <li><a href="<?=DIR?>Pedido/listadoPorFecha" data-toggle="tooltip" title="Listados de Pedidos">Listado Por Fecha</a></li>         
+            <li><a href="<?=DIR?>Pedido/listadoPorSucursal" data-toggle="tooltip" title="Listados de Pedidos">Listado Por Sucursal</a></li>         
+            <li><a href="<?=DIR?>Pedido/estadoPedidos" data-toggle="tooltip" title="Listados de Pedidos">Listado Por Cerveza</a></li>         
+          </ul>
+        </li> 
 
       </ul>
  

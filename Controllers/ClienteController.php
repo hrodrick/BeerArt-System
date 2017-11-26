@@ -81,13 +81,13 @@ class ClienteController{
 	public function listado($page=1,$campo='id',$orden='asc'){
 	    $countPages = 0;
 	    $totalCount = 0;
-		$sucursales = array();
+		$clientes = array();
 	    $totalCount=$this->datosUsuario->contarCliente();
 	    if($totalCount>0){
 	    	$countPages = $totalCount / PAGINATION;
 	    	$countPages = ceil($countPages);
 		}	    
-	    $sucursales=$this->datosUsuario->listar($page,$campo,$orden);
+	    $clientes=$this->datosUsuario->listar($page,$campo,$orden);
 
 		require(URL_VISTA_BACK."clilist.php");
 	}

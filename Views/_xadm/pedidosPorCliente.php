@@ -5,9 +5,9 @@
     <body background="<?=DIR.URL_IMG.$imagen;?>">    
         <div id="wrapper">
             <div id="encabezado"></div>
-            <?php include(URL_VISTA_FRONT."menu.php");?>
+            <?php include(URL_VISTA_BACK."menu.php");?>
             <div class="container">      
-          <h2 class="t_blanco">&nbsp;Mis Pedidos</h2>
+          <h2 class="t_blanco">&nbsp;Pedidos de <?=$cliente->getEmail();?></h2>
           <p>&nbsp;</p>
           <div class="contenedor div_trans5">          
             <?php
@@ -92,14 +92,14 @@
           </div>   
           <!-- Paginacion usa la variable destino para los links   -->
           <?php
-          $destino='Pedido/pedidos/';
-          require('Views/paginacion.php');
+          $destino='Pedido/pedidosPorCliente/'.base64_encode($cliente->getId()).'/';
+          require('Views/_xadm/paginacion.php');
           ;?>          
             </div> <!-- /container -->
         </div>
     <BR><BR>
             <?php
-                include(URL_VISTA_FRONT."pie.php");
+                include(URL_VISTA_BACK."pie.php");
             ?> 
         </body>
         

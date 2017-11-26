@@ -128,7 +128,41 @@ class PedidoController{
 				$valuePedidos->addLinea($valueListaPedido);
 			}
 		}
+
 		require(URL_VISTA_FRONT."pedidos.php");	
+	}
+
+	public function estadoPedidos($page=1,$campo='fecha',$orden='desc'){
+	    $countPages = 0;
+	    $totalCount = 0;
+		$cervezas = array();
+		$cliente='';
+		$sucursal='';
+	    $totalCount=$this->datosPedido->contar();
+	    if($totalCount>0){
+	    	$countPages = $totalCount / PAGINATION;
+	    	$countPages = ceil($countPages);
+		}	
+		$listaLineasPedido=array();
+		$pedidos=$this->datosPedido->listar($page,$campo,$orden);
+		foreach ($pedidos as $key => $valuePedidos) {
+			$listaLineasPedido=$this->datosLineaPedido->listarPorPedido($valuePedidos->getId());
+			$sucursal=$this->datosSucursal->buscarId($valuePedidos->getSucursal());
+			$valuePedidos->setSucursal($sucursal);
+			$cliente=$this->datosCliente->buscarId($valuePedidos->getCliente());
+			$valuePedidos->setCliente($cliente);			
+			foreach ($listaLineasPedido as $key => $valueListaPedido) {
+				$valueListaPedido->setCerveza($this->datosTipoCerveza->buscarId($valueListaPedido->getCerveza()));
+				$valueListaPedido->setEnvase($this->datosEnvase->buscarId($valueListaPedido->getEnvase()));
+				$valuePedidos->addLinea($valueListaPedido);
+			}
+		}
+		require(URL_VISTA_BACK."estadoPedidos.php");	
+	}
+
+	public function cambioEstado($estado,$idPedido,$page){
+		$this->datosPedido->actualizarEstado($idPedido,$estado);
+		$this->estadoPedidos($page);
 	}
 
 	public function borrarLinea($id){	
@@ -144,6 +178,120 @@ class PedidoController{
 		require(URL_VISTA_FRONT."confirmar.php");		
 	}
 
+	public function reorder($page,$campo,$orden){
+		$this->datosCliente->listarAll($page,$campo,$orden);
+		header("Location: ".DIR."Pedido/listadoPorCliente/".$page."/".$campo."/".$orden);		
+	}
+
+	public function listadoPorCliente($page=1,$campo='apellido',$orden='asc'){
+	    $countPages = 0;
+	    $totalCount = 0;
+		$clientes = array();
+	    $totalCount=$this->datosCliente->contarCliente();
+	    if($totalCount>0){
+	    	$countPages = $totalCount / PAGINATION;
+	    	$countPages = ceil($countPages);
+		}	    
+	    $clientes=$this->datosCliente->listarAll($page,$campo,$orden);
+		require(URL_VISTA_BACK."listadoClientes.php");
+	}
+
+	public function pedidosPorCliente($id,$page=1,$campo,$orden='asc'){
+		$idCliente=base64_decode($id);
+	    $countPages = 0;
+	    $totalCount = 0;
+		$cervezas = array();
+		$cliente=$this->datosCliente->buscarId($idCliente);		
+	    $totalCount=$this->datosPedido->contarPorCliente($cliente);
+	    if($totalCount>0){
+	    	$countPages = $totalCount / PAGINATION_FRONT;
+	    	$countPages = ceil($countPages);
+		}	
+		$listaLineasPedido=array();
+		$pedidos=$this->datosPedido->listarPorCliente($cliente,$page);
+		foreach ($pedidos as $key => $valuePedidos) {
+			$listaLineasPedido=$this->datosLineaPedido->listarPorPedido($valuePedidos->getId());
+			foreach ($listaLineasPedido as $key => $valueListaPedido) {
+				$valueListaPedido->setCerveza($this->datosTipoCerveza->buscarId($valueListaPedido->getCerveza()));
+				$valueListaPedido->setEnvase($this->datosEnvase->buscarId($valueListaPedido->getEnvase()));
+				$valuePedidos->addLinea($valueListaPedido);
+			}
+		}
+
+		require(URL_VISTA_BACK."pedidosPorCliente.php");	
+	}
+
+	public function listadoPorSucursal($page=1,$campo='nombre',$orden='asc'){
+	    $countPages = 0;
+	    $totalCount = 0;
+		$sucursales= array();
+	    $totalCount=$this->datosSucursal->contar();
+	    if($totalCount>0){
+	    	$countPages = $totalCount / PAGINATION;
+	    	$countPages = ceil($countPages);
+		}	    
+	    $sucursales=$this->datosSucursal->listAll($page,$campo,$orden);
+		require(URL_VISTA_BACK."listadoSucursales.php");
+	}
+
+	public function pedidosPorSucursal($id,$page=1,$campo,$orden='asc'){
+		$idSucursal=base64_decode($id);
+	    $countPages = 0;
+	    $totalCount = 0;
+		$cervezas = array();
+		$sucursal=$this->datosSucursal->buscarId($idSucursal);		
+	    $totalCount=$this->datosPedido->contarPorSucursal($sucursal);
+	    if($totalCount>0){
+	    	$countPages = $totalCount / PAGINATION_FRONT;
+	    	$countPages = ceil($countPages);
+		}	
+		$listaLineasPedido=array();
+		$pedidos=$this->datosPedido->listarPorSucursal($sucursal,$page);
+		foreach ($pedidos as $key => $valuePedidos) {
+			$listaLineasPedido=$this->datosLineaPedido->listarPorPedido($valuePedidos->getId());
+			$valuePedidos->setSucursal($sucursal);
+			$cliente=$this->datosCliente->buscarId($valuePedidos->getCliente());
+			$valuePedidos->setCliente($cliente);				
+			foreach ($listaLineasPedido as $key => $valueListaPedido) {
+				$valueListaPedido->setCerveza($this->datosTipoCerveza->buscarId($valueListaPedido->getCerveza()));
+				$valueListaPedido->setEnvase($this->datosEnvase->buscarId($valueListaPedido->getEnvase()));
+				$valuePedidos->addLinea($valueListaPedido);
+			}
+		}
+
+		require(URL_VISTA_BACK."pedidosPorSucursal.php");	
+	}
+
+	public function listadoPorFecha(){
+		require(URL_VISTA_BACK."ingFecha.php");
+	}
+
+	public function pedidosPorFecha($fecha,$page=1,$campo='fecha',$orden='asc'){
+	    $countPages = 0;
+	    $totalCount = 0;
+		$cervezas = array();
+	    $totalCount=$this->datosPedido->contarPorFecha($fecha);
+	    if($totalCount>0){
+	    	$countPages = $totalCount / PAGINATION_FRONT;
+	    	$countPages = ceil($countPages);
+		}	
+		$listaLineasPedido=array();
+		$pedidos=$this->datosPedido->listadoPorFecha($fecha,$page);
+		foreach ($pedidos as $key => $valuePedidos) {
+			$listaLineasPedido=$this->datosLineaPedido->listarPorPedido($valuePedidos->getId());
+			$sucursal=$this->datosSucursal->buscarId($valuePedidos->getSucursal());
+			$valuePedidos->setSucursal($sucursal);
+			$cliente=$this->datosCliente->buscarId($valuePedidos->getCliente());
+			$valuePedidos->setCliente($cliente);			
+			foreach ($listaLineasPedido as $key => $valueListaPedido) {
+				$valueListaPedido->setCerveza($this->datosTipoCerveza->buscarId($valueListaPedido->getCerveza()));
+				$valueListaPedido->setEnvase($this->datosEnvase->buscarId($valueListaPedido->getEnvase()));
+				$valuePedidos->addLinea($valueListaPedido);
+			}
+		}
+
+		require(URL_VISTA_BACK."pedidosPorFecha.php");	
+	}
 
 	/**
 	*

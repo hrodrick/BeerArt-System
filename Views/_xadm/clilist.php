@@ -33,15 +33,11 @@
 		                      <td colspan="8">&nbsp;</td>
 		                  </tr>
 		                  <?php }else{
-		                      foreach ($sucursales as $valor) {
+		                      foreach ($clientes as $valor) {
 		                      		$sb=standBy($valor->getStandBy());		     
 		                  ?>
-<script type="text/javascript">
- jQuery(window).on('load',function(){
-        jQuery('#del').modal('show');
-    });
-</script>		                  
-		                 <div id="del" class="modal fade" role="dialog">
+                  
+		                 <div id="del<?=$valor->getId();?>" class="modal fade" role="dialog">
 		                      <div class="modal-dialog">
 		                          <div class="modal-content">
 		                               <div class="modal-header modal-header-danger">

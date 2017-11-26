@@ -13,7 +13,7 @@
 		                     <th width="4%"></th>
 		                     <th width="4%"></th>
 		                     <th width="67%"><a href="<?=DIR?>Rol/reorder/<?= $page;?>/rol/<?= ($campo!='rol')?'asc':ver_orden($orden);?>" class="t_blanco_link" data-toggle="tooltip" data-html="true"  title="Ordenar por Rol orden <?php echo ver_orden($orden);?>">Rol<?php if ($campo=='rol') {?>&nbsp;<img src="<?php echo $img;?>" border="0"><?php }?></a></th>
-		                     <th width="15%"><a href="<?=DIR?>Rol/reorder/<?= $page;?>/permisos/<?= ($campo!='permisos')?'asc':ver_orden($orden);?>" class="t_blanco_link" data-toggle="tooltip" data-html="true"  title="Ordenar por Permisos orden <?php echo ver_orden($orden);?>">Permisos<?php if ($campo=='rol') {?>&nbsp;<img src="<?php echo $img;?>" border="0"><?php }?></a></th>		                     		                     
+		                     <th width="15%"><a href="<?=DIR?>Rol/reorder/<?= $page;?>/permisos/<?= ($campo!='permisos')?'asc':ver_orden($orden);?>" class="t_blanco_link" data-toggle="tooltip" data-html="true"  title="Ordenar por Permisos orden <?php echo ver_orden($orden);?>">Permisos<?php if ($campo=='permisos') {?>&nbsp;<img src="<?php echo $img;?>" border="0"><?php }?></a></th>		                     		                     
 		                     <th width="10%" align="center"><a href="<?=DIR?>Rol/reorder/<?= $page;?>/standBy/<?= ($campo!='standBy')?'asc':ver_orden($orden);?>" class="t_blanco_link" data-toggle="tooltip" data-html="true"  title="Ordenar por Stand By orden <?php echo ver_orden($orden);?>">Stand By<?php if ($campo=='standBy') {?>&nbsp;<img src="<?php echo $img;?>" border="0"><?php }?></a></th>
 		                  </tr>
 		              </thead>

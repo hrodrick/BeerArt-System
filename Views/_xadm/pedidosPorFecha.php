@@ -5,9 +5,9 @@
     <body background="<?=DIR.URL_IMG.$imagen;?>">    
         <div id="wrapper">
             <div id="encabezado"></div>
-            <?php include(URL_VISTA_FRONT."menu.php");?>
+            <?php include(URL_VISTA_BACK."menu.php");?>
             <div class="container">      
-          <h2 class="t_blanco">&nbsp;Mis Pedidos</h2>
+          <h2 class="t_blanco">&nbsp;Pedidos de Fecha: <?=$fecha;?></h2>
           <p>&nbsp;</p>
           <div class="contenedor div_trans5">          
             <?php
@@ -19,13 +19,16 @@
                   <thead>                   
                       <tr>
                          <th width="10%" class="t_naranja"></th>
-                         <th width="80%" class="t_blanco">Pedido de Fecha: <?= $valuePedidos->getFecha();?><BR>Estado: <?=$estado[$valuePedidos->getEstado()]?></th>
+                         <th width="80%" class="t_blanco">Pedido de Fecha: <?= $valuePedidos->getFecha();?><BR>
+                                                          Estado: <?=$estado[$valuePedidos->getEstado()]?><BR>
+                                                          Cliente: <?= $valuePedidos->getCliente()->getApellido();?>, <?= $valuePedidos->getCliente()->getNombre();?><BR>
+                                                          E-Mail: <?= $valuePedidos->getCliente()->getEmail();?></th>
                          <th width="10%" class="t_naranja"></th>                         
                       </tr>
                   </thead> 
                   <tbody>
                 <tr>            
-                  <td class="t_blanco"></td>
+                  <td></td>
                   <td> 
                  <table>
                     <thead>                   
@@ -76,7 +79,7 @@
                   </tbody>
                 </table>
                 </td>
-                <td class="t_rojo"></td>
+                <td></td>
               </tr>
             </tbody>
                </table>
@@ -92,14 +95,14 @@
           </div>   
           <!-- Paginacion usa la variable destino para los links   -->
           <?php
-          $destino='Pedido/pedidos/';
-          require('Views/paginacion.php');
+          $destino='Pedido/pedidosPorFecha/'.$fecha.'/';
+          require('Views/_xadm/paginacion.php');
           ;?>          
             </div> <!-- /container -->
         </div>
     <BR><BR>
             <?php
-                include(URL_VISTA_FRONT."pie.php");
+                include(URL_VISTA_BACK."pie.php");
             ?> 
         </body>
         
