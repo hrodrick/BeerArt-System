@@ -148,6 +148,8 @@ class DBCervezaDAO extends SingletonAbstractDAO implements iDao{
 
 		$result = $command->fetchAll();
 
+		$cervezas = array();
+
 		foreach($result as $row)
 		{
 			$c = new Cerveza($row['tipo'],$row['descripcion'],$row['precioXLitro'],$row['foto'],$row['standBy']);

@@ -85,6 +85,8 @@ class DBEnvaseDAO extends SingletonAbstractDAO implements iDao{
 		  	$countPages = ceil($countPages);
 		}
 
+		$envases = array();
+
 		foreach($result as $row)
 		{
 			$c = new Envase($row['tipo'],$row['capacidad'],$row['coeficiente'],$row['foto'],$row['standBy']);
@@ -104,6 +106,8 @@ class DBEnvaseDAO extends SingletonAbstractDAO implements iDao{
 		$command->execute();
 
 		$result = $command->fetchAll();
+
+		$envases = array();
 
 		foreach($result as $row)
 		{

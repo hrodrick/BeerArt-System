@@ -12,7 +12,7 @@
       </div>
       <div class="collapse navbar-collapse" id="navbar-1">
       <ul class="nav navbar-nav">
-        <li><a href="<?=DIR?>Front/inicio" data-toggle="tooltip" title="Ir al Menu Principal"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li><a href="<?=DIR?>Front/inicio" data-toggle="tooltip" title="Ir al Menu Principal"><span class="glyphicon glyphicon-home"></span> Home </a></li>
         <li><a href="<?=DIR?>Front/listBeer" data-toggle="tooltip" title="Productos"><span class="glyphicon glyphicon-grain"></span> Productos</a></li>
         <li><a href="<?=DIR?>Front/contacto" data-toggle="tooltip" title="Contacto"><span class="glyphicon glyphicon-envelope"></span> Contacto</a></li>
         <li><a href="<?=DIR?>Front/registro" data-toggle="tooltip" title="Registro"><span class="glyphicon glyphicon-user"></span> Registrese</a></li>
@@ -39,6 +39,7 @@
                                         <a href="<?=DIR?>Cliente/darseDeBaja/<?= urlencode(base64_encode($_SESSION['cliente']->getId()));?>" data-toggle="tooltip" title="Eliminar usuario" class="btn btn-danger">Darme de baja </a>
                                         <a href="<?=DIR?>Front/edit/<?= urlencode(base64_encode($_SESSION['cliente']->getId()));?>" data-toggle="tooltip" title="Modificar Mis Datos" class="btn btn-primary">Modificar</a>
                                         <a href="#" data-dismiss="modal" class="btn btn-warning">Cerrar</a>
+                                        
                                    </div>
                               </div>
                           </div>
