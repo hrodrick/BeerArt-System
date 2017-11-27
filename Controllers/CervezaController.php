@@ -337,8 +337,11 @@ class CervezaController{
 		      'foto'=>'Kierkegaard_Bier.jpg'
 		      )
 		);
+	
 		$lista=array();
+
 		$id=0;
+
 		foreach ($cer as $value) {
 			$cerveza=$value['tipo'];
 			$precioXLitro=$value['precio'];

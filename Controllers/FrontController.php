@@ -53,6 +53,39 @@ class FrontController{
 		}		 		
 	}
 
+	public function facebookChq($usuario){
+		if(isset($usuario))
+      {
+        $objeto = json_decode($usuario);
+
+        $nombre= $objeto->name;
+        $apellido = $objeto->surname;
+        $email= $objeto->email;
+        $password= $objeto->password;
+        $password= "";
+        
+        var_dump($usuario);
+        echo '<br>';
+        var_dump($objeto);
+
+        $user = new Usuario(0,$nombre,$apellido,"","", "" , "" ,$email,$password);
+		
+        $cuentaExistente = $this->datosCliente->buscarEmail($email);
+        
+        if(isset($cuentaExistente) && !is_string($cuentaExistente))
+        {
+            $_SESSION['cliente'] = $cuentaExistente;
+        }
+        else
+        {
+        	$this->datosCliente->insertar($user);
+        	$_SESSION['cliente'] = $user;
+        }
+        header("Location: ".DIR."Front/inicio");
+      }
+	}
+
+
 	public function logOut(){
 		session_destroy();
 		header("Location: ".DIR);

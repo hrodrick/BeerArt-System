@@ -11,12 +11,14 @@ class Pedido {
 	private $fecha;
 	private $estado; // 3 estados 'En Preparacion' - 'Enviado' - 'Entregado'
 	private $pedido;
+	private $fecha_entrega;
 
 	function __construct(){
 		$this->id=0;
 		$this->cliente=0;
 		$this->sucursal=0;
 		$this->fecha=date('Y-m-d H:i:s');
+		$this->fecha_entrega=date('Y-m-d H:i:s');
 		$this->estado=0;
 		$this->pedido=array();
 	}
@@ -97,5 +99,14 @@ class Pedido {
 		}
 		return $total;
 	}
+
+	function getFechaEntrega(){
+		return $this->fecha_entrega;
+	}
+
+	function setFechaEntrega($fechaEntrega){
+		$this->fecha_entrega = $fechaEntrega;
+	}
+
 }
 ?>

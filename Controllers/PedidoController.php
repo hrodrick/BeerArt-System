@@ -37,6 +37,7 @@ class PedidoController{
 	}
 
 	public function addCart($cantidad,$idCerveza,$idEnvase){
+
 		$cerveza=$this->datosTipoCerveza->buscarId($idCerveza);
 		$envase=$this->datosEnvase->buscarId($idEnvase);
 		$linea=new LineaPedido($cerveza,$envase,$cerveza->getPrecioXLitro()*$envase->getCoeficiente(),$cantidad);
@@ -51,7 +52,9 @@ class PedidoController{
 		header("Location: ".DIR."Front/producto/".base64_encode($idCerveza));
 	}
 
-	public function nuevo($lugar,$dom,$suc){
+	public function nuevo($lugar,$dom,$suc, $fechaEntrega, $horarioEntrega){
+		
+		$fechaEntrega = $fechaEntrega." ".$horarioEntrega.":00";
 		/*
 		$dir1='San Martín 3000, Mar del Plata';
 		print('<BR>Direccion envio: '.$dir1);
@@ -86,16 +89,20 @@ class PedidoController{
 		}
 		$_SESSION['pedido']->setSucursal($suc);
 		$_SESSION['pedido']->setCliente($_SESSION['cliente']->getId());
+		$_SESSION['pedido']->setFechaEntrega($fechaEntrega);
 		$idPedido=$this->datosPedido->insertar($_SESSION['pedido']);
+
 
 		foreach ($_SESSION['pedido']->getPedido() as $key => $value) {
 			$value->setIdPedido($idPedido);
 			$this->datosLineaPedido->insertar($value);
 		}
+
 		if($lugar==1){
 			$envio = new Envio($idPedido,$dom);
 			$this->datosEnvio->insertar($envio);
 		}
+
 		$_SESSION['pedido']=NULL;
 		header("Location: ".DIR."Pedido/enviado/");	
 	}

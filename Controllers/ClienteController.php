@@ -18,7 +18,7 @@ class ClienteController{
 	}
 
  	public function index(){
-		require(URL_VISTA_BACK."home.php");
+		require(URL_VISTA_FRONT."inicio.php");
 	}
 
  	public function cliadd(){
@@ -90,6 +90,12 @@ class ClienteController{
 	    $clientes=$this->datosUsuario->listar($page,$campo,$orden);
 
 		require(URL_VISTA_BACK."clilist.php");
+	}
+
+	public function darseDeBaja($idUsuario){
+		$this->datosUsuario->eliminar(base64_decode($idUsuario));
+		unset($_SESSION["cliente"]);
+		$this->index();
 	}
 }
 ?>

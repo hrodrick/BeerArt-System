@@ -16,7 +16,7 @@ namespace Config;
 	//define('DB_USER', 'techmdq1_sergio');
 	define('DB_USER', 'root');
 	//define('DB_PASS', 'cl14m51962');	
-	define('DB_PASS', 'cl14m5');	
+	define('DB_PASS', '');	
 
 	define('PAGINATION', 15);	
 	define('PAGINATION_FRONT', 8);	

@@ -337,7 +337,7 @@ class DBCervezaDAO extends SingletonAbstractDAO implements iDao{
 		foreach($result as $row)
 		{
 			$c = new CervezaConEnvDTO($row['id'],$row['tipo'],$row['descripcion'],$row['precioXLitro'],$row['foto'],$row['standBy']);
-
+			$queryEnv = 0;
 			$queryEnv += $c->getId();
 			$pdo = new Connection();
 			$connection = $pdo->Connect();

@@ -158,5 +158,18 @@ class UsuarioController{
 
 		require(URL_VISTA_BACK."userlist.php");
 	}
+
+	public function litrosVendidosEntreFechas(){
+		if(!isset($_SESSION['usuario'])){
+			header("Location: ".DIR."Usuario/userin");
+		}
+		require(URL_VISTA_BACK."litrosVendidosEntreFechas.php");
+	}
+
+	public function darseDebaja($idUsuario){
+		$this->datosUsuario->eliminar(base64_decode($idUsuario));
+		unset($_SESSION["usuario"]);
+		$this->index();
+	}
 }
 ?>
