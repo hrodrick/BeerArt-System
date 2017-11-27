@@ -19,7 +19,10 @@
                   <thead>                   
                       <tr>
                          <th width="10%" class="t_naranja"></th>
-                         <th width="80%" class="t_blanco">Pedido de Fecha: <?= $valuePedidos->getFecha();?><BR>Estado: <?=$estado[$valuePedidos->getEstado()]?></th>
+                         <th width="80%" class="t_blanco"> Pedido de Fecha: <?= $valuePedidos->getFecha();?><BR>
+                          Estado: <?=$estado[$valuePedidos->getEstado()]?><BR>
+                          Fecha de entrega: <?=$valuePedidos->getFechaEntrega();?>
+                         </th>
                          <th width="10%" class="t_naranja"></th>                         
                       </tr>
                   </thead> 

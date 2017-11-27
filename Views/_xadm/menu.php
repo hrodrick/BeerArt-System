@@ -68,6 +68,15 @@
           </ul>
         </li> 
 
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" data-toggle="tooltip"
+            title="Datos de las ventas">Ventas <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li> 
+              <a href="<?=DIR?>Usuario/litrosVendidosEntreFechas" data-toggle="tooltip" title="litros vendidos entre fechas"> Lts. vendidos por  período</a> 
+            </li>
+          </ul>
+        </li> 
+
       </ul>
  
 
@@ -87,13 +96,13 @@
                                         <h5><?php echo $_SESSION['usuario']->getEmail();?></h5>                                                             
                                    </div>
                                    <div class="modal-footer">                        
+                                        <a href="<?=DIR?>Usuario/darseDeBaja/<?= urlencode(base64_encode($_SESSION['usuario']->getId()));?>" data-toggle="tooltip" title="Eliminar usuario" class="btn btn-danger">Darme de baja</a>
                                         <a href="<?=DIR?>Usuario/edit/<?= urlencode(base64_encode($_SESSION['usuario']->getId()));?>" data-toggle="tooltip" title="Modificar Mis Datos" class="btn btn-primary">Modificar</a>
                                         <a href="#" data-dismiss="modal" class="btn btn-warning">Cerrar</a>
                                    </div>
                               </div>
                           </div>
                      </div> 
-
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" data-toggle="tooltip" title=""><span class="glyphicon glyphicon-user"></span> <?=$_SESSION['usuario']->getNombre().' '.$_SESSION['usuario']->getApellido()?> <span class="caret"></span></a>

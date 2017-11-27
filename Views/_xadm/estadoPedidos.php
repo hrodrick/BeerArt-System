@@ -15,6 +15,7 @@
                       <tr>
                          <th width="10%" class="t_naranja"></th>
                          <th width="15%" class="t_naranja">Fecha</th>
+                         <th width="15%" class="t_naranja">Fecha de entrega</th>
                          <th width="20%" class="t_naranja">Email</th>
                          <th width="20%" class="t_naranja">Sucursal</th>                         
                          <th width="15%" class="t_naranja">Estado</th>                         
@@ -33,6 +34,7 @@
                       <tr>
                          <td width="10%" class="t_blanco" align="right"><a data-toggle="modal" href="#data<?=$valuePedidos->getId();?>" title="Ver Datos Completos del Pedido <?=$valuePedidos->getFecha()?>"><img src="<?=DIR.URL_IMG?>s_info.png" border="0"></a></td>
                          <td width="15%" class="t_blanco"><?= $valuePedidos->getFecha();?></td>
+                         <td width="15%" class="t_blanco"><?= $valuePedidos->getFechaEntrega();?></td>
                          <td width="20%" class="t_blanco"><?= $valuePedidos->getCliente()->getEmail();?></td>
                          <td width="20%" class="t_blanco"><?= $valuePedidos->getSucursal()->getDomicilio();?></td>
                          <td width="15%" class="t_negro">
@@ -68,6 +70,7 @@
                                         <h4>Datos del Pedido</h4>
                                         <h4>Fecha: <?=$valuePedidos->getFecha()?></h4>
                                         <h4>Cliente: <?=$valuePedidos->getCliente()->getEmail()?></h4>
+                                        <h4>Fecha de entrega: <?=$valuePedidos->getFechaEntrega()?></h4>
                                    </div>
                                    <div class="modal-body">
                                      <table class="table">

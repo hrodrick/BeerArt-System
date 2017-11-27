@@ -19,10 +19,13 @@
                   <thead>                   
                       <tr>
                          <th width="10%" class="t_naranja"></th>
-                         <th width="80%" class="t_blanco">Pedido de Fecha: <?= $valuePedidos->getFecha();?><BR>
-                                                          Estado: <?=$estado[$valuePedidos->getEstado()]?><BR>
-                                                          Cliente: <?= $valuePedidos->getCliente()->getApellido();?>, <?= $valuePedidos->getCliente()->getNombre();?><BR>
-                                                          E-Mail: <?= $valuePedidos->getCliente()->getEmail();?></th>
+                         <th width="80%" class="t_blanco">Pedido de Fecha: <?= $valuePedidos->getFecha();?> <BR>
+                                                          Estado:  <?=$estado[$valuePedidos->getEstado()]?> <BR>
+                                                          Fecha de entrega: <?= $valuePedidos->getFechaEntrega();?> <BR>
+                                                          Cliente: <?= $valuePedidos->getCliente()->getApellido();?>, 
+                                                                   <?= $valuePedidos->getCliente()->getNombre();?> <BR>
+                                                          E-Mail:  <?= $valuePedidos->getCliente()->getEmail();?>
+                          </th>
                          <th width="10%" class="t_naranja"></th>                         
                       </tr>
                   </thead> 

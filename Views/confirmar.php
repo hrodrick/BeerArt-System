@@ -42,15 +42,31 @@
                                       }?>
                                     </select>
                                     <p>&nbsp;</p>
-                              </div>                   
+                              </div>             
+                            </div>
+                            <p>&nbsp;</p>
+                            <div id="fechaEntrega">
+                              <label class="control-label col-xs-2 t_blanco" for="inputForm"> Fecha de entrega:&nbsp; </label>
+                              <div class="col-xs-9">
+                                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar text-warning"></i></span>
+                                  <input type="date" class="form-control input-lg" value='<?= date('Y-m-d')?>' name="fechaEntrega" required>
+                              </div>
+                            </div>
+                            <p>&nbsp;</p>
+                            <div id="horarioEntrega">
+                              <label class="control-label col-xs-2 t_blanco" for="inputForm"> Horario de entrega:&nbsp; </label>
+                              <div class="col-xs-9">
+                                  <input type="time" class="form-control input-lg" name="horarioEntrega" required>
+                              </div>
                             </div>
 
                               <div class="col-xs-12 text-center">
                                   <input type="hidden" name="idSuc" value="1">
                                   <button type="submit" class="btn btn-warning">Terminar Compra</button>
                                   <p>&nbsp;</p>
-                              </div>                    
+                              </div>
                    </form>
+
           <script type="text/javascript">
             function domi(){
                 if (document.form.lugar[0].checked) {

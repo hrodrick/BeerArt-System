@@ -19,7 +19,10 @@
                   <thead>                   
                       <tr>
                          <th width="10%" class="t_naranja"></th>
-                         <th width="80%" class="t_blanco">Pedido de Fecha: <?= $valuePedidos->getFecha();?><BR>Estado: <?=$estado[$valuePedidos->getEstado()]?></th>
+                         <th width="80%" class="t_blanco">Pedido de Fecha: <?= $valuePedidos->getFecha();?> <BR>
+                          Estado: <?=$estado[$valuePedidos->getEstado()]?> <BR>
+                          Fecha de entrega: <?= $valuePedidos->getFechaEntrega() ?>
+                         </th>
                          <th width="10%" class="t_naranja"></th>                         
                       </tr>
                   </thead> 
@@ -52,7 +55,12 @@
 
                      <tr>
                          <td></td>                      
-                         <td><a href="<?=DIR.URL_IMG_CER.'tp_'.$fotoCerveza;?>" data-lightbox="galeria" data-title="<?= $valor->getCerveza()->getTipo();?>"><img src="<?=DIR.URL_IMG_CER.'t2_'.$fotoCerveza;?>" class="img-thumbnail" border="0" data-toggle="tooltip" title='Ver Foto Cerveza <?= $valor->getCerveza()->getTipo();?>' alt='<?= $valor->getCerveza()->getTipo();?>'></a></td>
+                         <td><a href="<?=DIR.URL_IMG_CER.'tp_'.$fotoCerveza;?>" data-lightbox="galeria" 
+                              data-title="<?= $valor->getCerveza()->getTipo();?>"><img src="<?=DIR.URL_IMG_CER.'t2_'.$fotoCerveza;?>"
+                              class="img-thumbnail" border="0" data-toggle="tooltip"
+                              title='Ver Foto Cerveza <?= $valor->getCerveza()->getTipo();?>' 
+                              alt='<?= $valor->getCerveza()->getTipo();?>'></a>
+                          </td>
                          <td class="t_blanco">&nbsp;<?= $valor->getCerveza()->getTipo();?></td>
                          <td><a href="<?=DIR.URL_IMG_ENV.'tp_'.$fotoEnvase;?>" data-lightbox="galeria" data-title="<?= $valor->getEnvase()->getTipo();?>"><img src="<?=DIR.URL_IMG_ENV.'t2_'.$fotoEnvase;?>" class="img-circle img-thumbnail" border="0" data-toggle="tooltip" title='Ver Foto Envase <?= $valor->getEnvase()->getTipo();?>' alt='<?= $valor->getEnvase()->getTipo();?>'></a></td>                         
                          <td class="t_blanco">&nbsp;<?= $valor->getEnvase()->getTipo();?></td>

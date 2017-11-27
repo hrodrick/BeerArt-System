@@ -35,7 +35,8 @@
                                         <h5><?php echo $_SESSION['cliente']->getDni();?></h5>                                                      
                                         <h5><?php echo $_SESSION['cliente']->getEmail();?></h5>                                                             
                                    </div>
-                                   <div class="modal-footer">                        
+                                   <div class="modal-footer">
+                                        <a href="<?=DIR?>Cliente/darseDeBaja/<?= urlencode(base64_encode($_SESSION['cliente']->getId()));?>" data-toggle="tooltip" title="Eliminar usuario" class="btn btn-danger">Darme de baja </a>
                                         <a href="<?=DIR?>Front/edit/<?= urlencode(base64_encode($_SESSION['cliente']->getId()));?>" data-toggle="tooltip" title="Modificar Mis Datos" class="btn btn-primary">Modificar</a>
                                         <a href="#" data-dismiss="modal" class="btn btn-warning">Cerrar</a>
                                    </div>
