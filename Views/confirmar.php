@@ -2,7 +2,10 @@
     $i = rand(1,9);
     $imagen="0".$i.".jpg";
     ?>
-    <body background="<?=DIR.URL_IMG.$imagen;?>" onload="domi()">    
+    <body background="<?=DIR.URL_IMG.$imagen;?>" onload="domi();">
+        
+        <script type="text/javascript" src="<?= DIR.URL_JS ?>google-maps.js" charset="utf-8"></script>
+
         <div id="wrapper">
             <div id="encabezado"></div>
             <?php include(URL_VISTA_FRONT."menu.php");?>
@@ -35,7 +38,7 @@
                               <div id="sucursal" style="display:none">
                               <label class="control-label col-xs-2 t_blanco" for="inputForm">Sucursal:&nbsp;</label>
                               <div class="col-xs-9">
-                                    <select name="suc" class="form-control" id="select">
+                                    <select name="suc" class="form-control" id="select" onchange="codeAddress()">
                                       <?php
                                       foreach ($sucursales as $value) {
                                           echo '<option value='.$value->getId().'>'.$value->getNombre().' - '.$value->getDomicilio().'</option>';
@@ -43,7 +46,12 @@
                                     </select>
                                     <p>&nbsp;</p>
                               </div>             
-                            </div>
+                               
+                              </div>
+                            
+                            <div id="map"  align="center" style="height: 300px;
+                                                                width: 100%;" ></div> 
+          
                             <p>&nbsp;</p>
                             <div id="fechaEntrega">
                               <label class="control-label col-xs-2 t_blanco" for="inputForm"> Fecha de entrega:&nbsp; </label>
@@ -86,12 +94,18 @@
                   document.form.suc.value=<?=$sucursales[1]->getId()?>;
                   document.form.suc.selectedIndex="1";                
                 }
-            }            
-          </script>                   
+            }
+
+            
+
+          </script>                 
               </div>  
             </div> <!-- /container -->
         </div>
     <BR><BR><BR><BR>
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATADjGhTAzoJCuKIL9yplek_UDeCYfvUE&callback=initMap">
+            </script>
             <?php
                 include(URL_VISTA_FRONT."pie.php");
             ?> 

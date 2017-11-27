@@ -94,8 +94,8 @@ class ClienteController{
 
 	public function darseDeBaja($idUsuario){
 		$this->datosUsuario->eliminar(base64_decode($idUsuario));
-		unset($_SESSION["cliente"]);
-		$this->index();
+		session_destroy();
+		header("location: ".DIR);
 	}
 }
 ?>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 24-11-2017 a las 19:28:16
--- Versión del servidor: 5.6.25-log
--- Versión de PHP: 5.6.31
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 27-11-2017 a las 19:06:41
+-- Versión del servidor: 10.1.28-MariaDB
+-- Versión de PHP: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -93,6 +93,21 @@ CREATE TABLE `envios` (
   `idPedido` bigint(20) NOT NULL,
   `domicilio` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `envios`
+--
+
+INSERT INTO `envios` (`id`, `idPedido`, `domicilio`) VALUES
+(1, 1, 'Hernandarias 4122'),
+(2, 2, 'Hernandarias 4122'),
+(3, 3, 'Hernandarias 4122'),
+(4, 4, 'Hernandarias 4122'),
+(5, 5, 'Hernandarias 4122'),
+(6, 6, 'Hernandarias 4122'),
+(7, 9, 'Hernandarias 4122'),
+(8, 12, 'Hernandarias 4122'),
+(9, 14, 'mi casa');
 
 -- --------------------------------------------------------
 
@@ -193,6 +208,43 @@ CREATE TABLE `lineapedido` (
   `cantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `lineapedido`
+--
+
+INSERT INTO `lineapedido` (`id`, `idPedido`, `idCerveza`, `idEnvase`, `precioUnitario`, `cantidad`) VALUES
+(1, 1, 7, 1, '70', 1),
+(2, 2, 10, 1, '80', 1),
+(3, 3, 13, 1, '150', 1),
+(4, 4, 10, 1, '80', 1),
+(5, 5, 10, 1, '80', 1),
+(6, 5, 7, 1, '70', 1),
+(7, 5, 7, 3, '140', 1),
+(8, 5, 11, 1, '75', 1),
+(9, 6, 10, 3, '160', 1),
+(10, 6, 13, 4, '540', 4),
+(11, 7, 9, 1, '60', 1),
+(12, 8, 10, 1, '80', 1),
+(13, 8, 10, 3, '160', 1),
+(14, 9, 4, 1, '45', 1),
+(15, 9, 4, 2, '54', 2),
+(16, 10, 10, 1, '80', 1),
+(17, 10, 10, 2, '96', 1),
+(18, 10, 10, 3, '160', 1),
+(19, 11, 9, 1, '60', 1),
+(20, 11, 9, 2, '72', 1),
+(21, 12, 7, 4, '252', 10),
+(26, 14, 7, 4, '252', 2),
+(27, 15, 13, 4, '540', 1),
+(28, 15, 5, 3, '150', 2),
+(29, 15, 9, 1, '60', 10),
+(30, 16, 2, 4, '243', 10),
+(31, 16, 7, 1, '70', 1),
+(32, 17, 5, 3, '150', 2),
+(33, 17, 5, 2, '90', 2),
+(34, 18, 7, 3, '140', 3),
+(35, 19, 7, 2, '84', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -204,8 +256,33 @@ CREATE TABLE `pedidos` (
   `cliente` int(11) NOT NULL,
   `sucursal` int(11) NOT NULL,
   `fecha` datetime NOT NULL,
-  `estado` tinyint(4) NOT NULL
+  `estado` tinyint(4) NOT NULL,
+  `fechaEntrega` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`id`, `cliente`, `sucursal`, `fecha`, `estado`, `fechaEntrega`) VALUES
+(1, 10, 1, '2017-11-22 20:44:24', 2, '2017-11-22 20:44:24'),
+(2, 10, 1, '2017-11-24 20:48:06', 2, '2017-11-29 20:44:24'),
+(3, 10, 1, '2017-11-24 20:51:13', 2, '2017-11-29 20:44:24'),
+(4, 10, 1, '2017-11-24 21:07:39', 2, '2017-11-29 20:44:24'),
+(5, 10, 1, '2017-11-24 21:53:08', 2, '2017-11-29 20:44:24'),
+(6, 10, 1, '2017-11-25 00:10:20', 1, '2017-12-12 12:30:40'),
+(7, 10, 2, '2017-11-25 00:28:09', 1, '2017-11-29 20:32:59'),
+(8, 10, 2, '2017-11-25 00:38:47', 1, '2017-11-29 12:44:24'),
+(9, 10, 1, '2017-12-03 09:32:10', 0, '2017-11-29 20:44:24'),
+(10, 8, 2, '2017-11-25 10:09:06', 0, '2017-11-29 20:44:24'),
+(11, 10, 2, '2017-11-26 11:00:52', 0, '2017-11-29 20:44:24'),
+(12, 10, 1, '2017-11-29 11:13:01', 0, '2017-11-29 20:44:24'),
+(14, 17, 1, '2017-11-26 21:47:15', 0, '2017-11-29 20:44:24'),
+(15, 17, 3, '2017-11-26 22:58:18', 0, '2018-01-19 20:30:00'),
+(16, 17, 3, '2017-11-23 03:27:24', 0, '2017-12-29 20:30:00'),
+(17, 8, 2, '2017-11-27 15:52:46', 0, '2017-11-29 03:44:00'),
+(18, 8, 2, '2017-11-27 15:55:17', 0, '2018-03-15 12:30:00'),
+(19, 8, 3, '2017-11-27 17:44:55', 0, '2017-11-14 12:32:00');
 
 -- --------------------------------------------------------
 
@@ -289,7 +366,8 @@ INSERT INTO `usuarios` (`id`, `idRol`, `nombre`, `apellido`, `domicilio`, `local
 (12, 1, 'prueba', 'pu', 'prueba', 'prubeba', '12345', '12345678', 'argento3.pepe@live.com.ar', '0bf1aa00e9f75572741f02de8c641d75', 0),
 (13, 0, 'Pepe1', 'Argentos', 'Arenales 2115', 'Mar del Plata', '1234567', '13245678', 'pepe@argentos.com', '30cd2f99101cdd52cc5fda1e996ee137', 0),
 (14, 0, 'Diego', 'Maradona', 'La Pelota 135', 'Quilmes', '123456', '12345678', 'diego@maradona.com', '202cb962ac59075b964b07152d234b70', 0),
-(15, 0, 'Alberto', 'Armando', 'Gallinero', 'Mar del Plata', '132', '12345678', 'armando@gallinero.com', '202cb962ac59075b964b07152d234b70', 0);
+(17, 0, 'Rodrigo', 'Soria', '', '', '', '', 'rodrigo.soria98@hotmail.com', 'd41d8cd98f00b204e9800998ecf8427e', 0),
+(18, 0, 'sadasd', 'asdasdas', 'adsdassdadas', 'sadasadsdas', 'dasddasasddas', '23112331', 'gajsowms@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 0);
 
 --
 -- Índices para tablas volcadas
@@ -358,46 +436,55 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `cervezas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT de la tabla `envases`
 --
 ALTER TABLE `envases`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT de la tabla `envios`
 --
 ALTER TABLE `envios`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT de la tabla `envxcer`
 --
 ALTER TABLE `envxcer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
 --
 -- AUTO_INCREMENT de la tabla `lineapedido`
 --
 ALTER TABLE `lineapedido`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT de la tabla `sucursales`
 --
 ALTER TABLE `sucursales`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

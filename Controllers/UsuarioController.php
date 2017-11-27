@@ -168,8 +168,8 @@ class UsuarioController{
 
 	public function darseDebaja($idUsuario){
 		$this->datosUsuario->eliminar(base64_decode($idUsuario));
-		unset($_SESSION["usuario"]);
-		$this->index();
+		session_destroy();
+		$this->userin();
 	}
 }
 ?>
