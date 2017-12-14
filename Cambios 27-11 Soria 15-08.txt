@@ -1,9 +1,0 @@
--Retocados metodos "darme de baja" en cliente y usuario controllers.
-	Ahora redirigen a la página correcta.
-
--Agregado google-maps.js en la carpeta static/js/
-
--Agregado mapa de google en confirmar pedido.
-	Al seleccionar sucursal lo centra y crea un marcador en la
-	dirección seleccionada. (primero convirtiéndola a coordenadas)
-
