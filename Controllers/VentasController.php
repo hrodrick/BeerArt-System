@@ -29,24 +29,53 @@ class VentasController{
 		require(URL_VISTA_BACK."litrosVendidosEntreFechas.php");
 	}
 	
+
 	public function ltsVendEntreFechas($inicio, $fin){
+		
+		$cervezas = array();
+		$ltsVendidos = array();
+		
 		if(strtotime($inicio) > strtotime($fin)){
 			$msj = "Error: la fecha de 'desde' debe ser menor a la de 'hasta'";
-		}
-		$cervezas = array();
-		$litrosPorCerveza = $this->datosPedido->litrosVendidosEntreFechas($inicio, $fin);
-		$cerIds = array_keys($litrosPorCerveza);
-		
-		foreach ($cerIds as $cerId) {
-			array_push( $cervezas, $this->datosTipoCerveza->buscarId($cerId) );
+		}else{
+			
+			$cervezas = $this->datosPedido->litrosVendidosEntreFechas($inicio, $fin);
+			foreach ($cervezas as $cerv) {
+				$lts = 0;
+				foreach ($cerv->getListaEnvases() as $env) {
+					$lts += $env->getCapacidad(); 
+				}
+				array_push($ltsVendidos, $lts);
+			}
 		}
 
 		$totalCount = count($cervezas);
 
+		var_dump($ltsVendidos);
+		var_dump($cervezas);
 
 		require(URL_VISTA_BACK."litrosVendidosEntreFechas.php");
 	}
 
+/*
+	public function ltsVendEntreFechas($inicio, $fin){
+		if(strtotime($inicio) > strtotime($fin)){
+			$msj = "Error: la fecha de 'desde' debe ser menor a la de 'hasta'";
+		}else{
+			$cervezas = array();
+			$cervezas = $this->datosPedido->litrosVendidosEntreFechas($inicio, $fin);
+			$cerIds = array_keys($cervezas);
+			
+			foreach ($cerIds as $cerId) {
+				array_push( $cervezas, $this->datosTipoCerveza->buscarId($cerId) );
+			}
+
+			$totalCount = count($cervezas);
+		}
+
+		require(URL_VISTA_BACK."litrosVendidosEntreFechas.php");
+	}
+*/
 
 }
 

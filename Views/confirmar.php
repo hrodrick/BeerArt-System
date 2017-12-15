@@ -61,10 +61,9 @@
                                 </div>
                               </div>
                                                    
-                              <!-- <div id="mapa" style="display:none"> -->
                               <div id="mapa" style="display:none;">
                                    <div class="col-xs-4">&nbsp;</div>
-                                   <!-- <div id="map" class="col-xs-8" style="height: 300px; width: 100%;" ></div> -->
+                                   <div id="map" class="col-xs-8" style="height: 300px; width: 100%;" ></div>
                                    <div id="map" style="height: 300px; width: 100%;"> </div>
                                     <p>&nbsp;</p>                                 
                               </div>
@@ -106,7 +105,7 @@
                   <?php
                     }
                   ?>
-                  
+
                 }
             }            
           </script>                   

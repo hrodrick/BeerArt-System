@@ -10,7 +10,7 @@ class Envase {
 	private $foto;
 	private $standBy;
 
-	function __construct($tipo,$capacidad,$coeficiente,$foto,$standBy=0){
+	function __construct($tipo,$capacidad,$coeficiente,$foto='',$standBy=0){
 		$this->id=0;
 		$this->tipo=$tipo;
 		$this->capacidad=$capacidad;

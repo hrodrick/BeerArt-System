@@ -45,7 +45,7 @@
 
               </div>      
 		      <?php
-		      	if(isset($cervezas)){
+		      	if(!empty($cervezas)){
 		      		if(!isset($msj))
 		      			$msj = "Litros vendidos entre el ". $inicio . " y el " . $fin;
 
@@ -76,15 +76,18 @@
 		                  <?php }
 		                  	else{
 		                      foreach ($cervezas as $valor) {
-		                      		$fotoTemp=(strlen($valor->getFoto())==0)?'Choppenhauer.jpg':$valor->getFoto();		     
+		                      		$fotoTemp=(strlen($valor->getCerveza()->getFoto())==0)?'Choppenhauer.jpg':$valor->getCerveza()->getFoto();		     
 		                  ?>
 		                <tr class="t_blanco">
-		                     <td> <a href="<?=DIR.URL_IMG_CER.'tp_'.$fotoTemp;?>" data-lightbox="galeria" data-title="<?= $valor->getTipo();?>">
-		                     		<img width="50%" src="<?=DIR.URL_IMG_CER.'t2_'.$fotoTemp;?>" class="img-thumbnail" border="0"
-		                     		data-toggle="tooltip" title='Ver Foto' alt='<?= $valor->getTipo();?>'> </a>
+		                     <td> <a href="<?=DIR.URL_IMG_CER.'tp_'.$fotoTemp;?>" data-lightbox="galeria" 
+		                     		 data-title="<?= $valor->getCerveza()->getTipo();?>">
+		                     		<img width="50%" src="<?=DIR.URL_IMG_CER.'t2_'.$fotoTemp;?>" class="img-thumbnail" 
+		                     			 border="0"
+		                     		data-toggle="tooltip" title='Ver Foto' alt='<?= $valor->getCerveza()->getTipo();?>'>
+		                     	  </a>
 		                     </td>
-		                     <td align="left"> <?= $valor->getTipo();?> </td>
-		                     <td> <?= number_format($litrosPorCerveza[$valor->getId()],2,',','.') ?> lts. </td>
+		                     <td align="left"> <?= $valor->getCerveza()->getTipo();?> </td>
+		                     <td> <?= number_format($ltsVendidos,2,',','.') ?> lts. </td>
 		                </tr>
 		                <?php
 		                		} // for-end
