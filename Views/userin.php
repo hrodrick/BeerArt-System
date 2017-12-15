@@ -61,7 +61,10 @@
               </div>
             </div> <!-- /container -->
         </div>
+
             <?php
                 include("pie.php");
             ?>      
-    </body>      
+    </body>     
+    <script src="<?=DIR.URL_JS?>facebookLogin.js" type="text/javascript"></script>
+

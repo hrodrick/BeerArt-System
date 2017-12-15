@@ -2,7 +2,8 @@
     $i = rand(1,9);
     $imagen="0".$i.".jpg";
     ?>
-    <body background="<?=DIR.URL_IMG.$imagen;?>" onload="domi()">    
+    <body background="<?=DIR.URL_IMG.$imagen;?>" onload="domi()">
+         
         <div id="wrapper">
             <div id="encabezado"></div>
             <?php include(URL_VISTA_FRONT."menu.php");?>
@@ -48,18 +49,23 @@
                               <div id="sucursal" style="display:none">
                                 <label class="control-label col-xs-2 t_blanco" for="inputForm">Sucursal:&nbsp;</label>
                                 <div class="col-xs-9">
-                                      <select name="suc" class="form-control" id="select">
+                                      <select name="suc" class="form-control" id="selectSucs" 
+                                              onchange="codeAddressBySelectedOption();">
                                         <?php
                                         foreach ($sucursales as $value) {
-                                            echo '<option value='.$value->getId().'>'.$value->getNombre().' - '.$value->getDomicilio().'</option>';
+                                            echo '<option value='.$value->getId().' id="'.$value->getDomicilio().', '.$value->getLocalidad().'" >'
+                                                  .$value->getNombre().' - '.$value->getDomicilio().
+                                              '</option>';
                                         }?>
                                       </select>                                  
                                 </div>
                               </div>
                                                    
-                              <div id="mapa" style="display:none">
+                              <!-- <div id="mapa" style="display:none"> -->
+                              <div id="mapa" style="display:none;">
                                    <div class="col-xs-4">&nbsp;</div>
-                                   <div id="map" class="col-xs-8" style="height: 300px; width: 100%;" ></div>
+                                   <!-- <div id="map" class="col-xs-8" style="height: 300px; width: 100%;" ></div> -->
+                                   <div id="map" style="height: 300px; width: 100%;"> </div>
                                     <p>&nbsp;</p>                                 
                               </div>
 
@@ -92,7 +98,15 @@
                   document.form.dom.value='';
                   document.form.suc.value=<?=$sucursales[1]->getId()?>;
                   document.form.suc.selectedIndex="1";     
-                  initMap('Colon 3100, Mar del Plata');
+                  initMap();
+                  <?php
+                    foreach ($sucursales as $sucursal) {
+                  ?>
+                      geoCodeAddress( "<?=$sucursal->getDomicilio().', '.$sucursal->getLocalidad()?>");
+                  <?php
+                    }
+                  ?>
+                  
                 }
             }            
           </script>                   
@@ -101,8 +115,11 @@
         </div>
     <BR><BR><BR><BR>
             <?php
+
                 include(URL_VISTA_FRONT."pie.php");
             ?> 
         </body>
-        
+     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATADjGhTAzoJCuKIL9yplek_UDeCYfvUE"></script> 
+    <script src="<?=DIR.URL_JS?>google-maps.js" type="text/javascript"></script>
+    <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5-j4JtjfJ33vcWn0iG9ZiY-WvTT7ifrE"></script> -->
 

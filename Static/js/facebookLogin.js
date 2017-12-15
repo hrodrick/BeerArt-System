@@ -16,8 +16,8 @@ function User(name, surname, email, password)
 
   window.fbAsyncInit = function() {
     FB.init({
-    appId      : '412426999172418', Rodrigo
-    // appId : '444489365948001', Sergio
+    appId      : '412426999172418', // Rodrigo
+    // appId : '444489365948001', // Sergio
     //appId : '2257174850975479',
     cookie     : true,
     xfbml      : true,
