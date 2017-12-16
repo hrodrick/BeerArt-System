@@ -141,7 +141,7 @@ class DBRolDAO extends SingletonAbstractDAO implements iDao{
 		$command->execute();
 		
 		$result = $command->fetchAll();
-		$obj = null;
+		$obj = '';
 		foreach($result as $row)
 		{
 			$obj = new Rol($row['rol'],$row['descripcion'],$row['permisos'],$row['standBy']);	

@@ -101,7 +101,7 @@ class DBPedidoDAO extends SingletonAbstractDAO implements iDao{
 			$page1 = ($page-1) * PAGINATION;
 		}
 
-		$query = 'SELECT * FROM '.$this->table.' WHERE estado  != 2 ORDER BY '.$campo.' ' .$orden.' LIMIT '.$page1.', '.PAGINATION;
+		$query = 'SELECT * FROM '.$this->table.' WHERE estado != 2 ORDER BY '.$campo.' ' .$orden.' LIMIT '.$page1.', '.PAGINATION;
 		
 		$pdo = new Connection();
 		$connection = $pdo->Connect();

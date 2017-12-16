@@ -49,7 +49,9 @@
 		      <?php
 		      	if(!empty($cervezas)){
 		      		if(!isset($msj))
-		      			$msj = "Litros vendidos entre el ". $inicio . " y el " . $fin;
+                		$fechaIni = date(FECHA,strtotime($inicio)); 		      			
+                		$fechaFin = date(FECHA,strtotime($fin)); 		      			
+		      			$msj = "Litros vendidos entre el ". $fechaIni . " y el " . $fechaFin;
 
 		      ?>
 		      <a name="lista"></a>
