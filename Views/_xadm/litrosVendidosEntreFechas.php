@@ -1,8 +1,10 @@
    <?php 
 	    $i = rand(1,9);
 	    $imagen="0".$i.".jpg";
-	    if(isset($cervezas)){
+	    if(!empty($cervezas)){
 	    	$ancla = "onload='listado()'";
+	    }else{
+	    	$ancla = '';
 	    }
     ?>
       <script>
