@@ -88,8 +88,8 @@ class FrontController{
 		require(URL_VISTA_FRONT."exitoso.php");	}
 
  	public function contacto(){
- 		$nombre;
- 		$email;
+ 		$nombre = '';
+ 		$email = '';
 		if(isset($_SESSION['usuario'])){
 			$nombre=$_SESSION['usuario']->getNombre().' '.$_SESSION['usuario']->getApellido();
 			$email=$_SESSION['usuario']->getEmail();
