@@ -7,7 +7,7 @@
 
 		function __construct()
 		{
-			$listaEnvasesDTO = array();
+			$this->listaEnvasesDTO = array();
 		}
 
 		public function setCerveza($cerveza){
@@ -19,7 +19,7 @@
 		}
 
 		public function addEnvaseDTO($envaseDTO){
-			array_push($listaEnvasesDTO, $envaseDTO);
+			array_push($this->listaEnvasesDTO, $envaseDTO);
 		}
 
 		public function getCerveza(){

@@ -86,8 +86,17 @@
 		                     		data-toggle="tooltip" title='Ver Foto' alt='<?= $valor->getCerveza()->getTipo();?>'>
 		                     	  </a>
 		                     </td>
+
+		                     <?php
+		                     	$lts = 0; 
+			                    foreach ($valor->getListaEnvasesDTO() as $env) {
+			                    	
+									$lts += $env->getEnvase()->getCapacidad() * $env->getCantidadHistoricaVendida(); 
+								}
+		                     ?>
+
 		                     <td align="left"> <?= $valor->getCerveza()->getTipo();?> </td>
-		                     <td> <?= number_format($ltsVendidos,2,',','.') ?> lts. </td>
+		                     <td> <?= number_format($lts,2,',','.') ?> lts. </td>
 		                </tr>
 		                <?php
 		                		} // for-end
