@@ -44,15 +44,17 @@
                           <button class="btn btn-lg btn-warning btn-block" type="submit">Enviar</button>
                       </div>
                </form>
+ 
+              </div>
+              
+              <?php
+		      	if(isset($cervezas)){
 
-              </div>      
-		      <?php
-		      	if(!empty($cervezas)){
-		      		if(!isset($msj))
+		      		if(!isset($msj)){
                 		$fechaIni = date(FECHA,strtotime($inicio)); 		      			
                 		$fechaFin = date(FECHA,strtotime($fin)); 		      			
 		      			$msj = "Litros vendidos entre el ". $fechaIni . " y el " . $fechaFin;
-
+		      			}
 		      ?>
 		      <a name="lista"></a>
 		      <div class="contenedor div_trans5">

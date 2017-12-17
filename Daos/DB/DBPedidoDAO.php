@@ -354,8 +354,10 @@ class DBPedidoDAO extends SingletonAbstractDAO implements iDao{
 
 			//$litrosXcerveza[$row["idCerveza"]] = $row["litrosVendidos"];
 		}
-		//Guardo la ultima cerveza de todas, que no entra en el if superior.
+		//Guardo la ultima cerveza de todas, que no entra en el if superior. En el caso de no haber cerveza no guardo nada.
+		if($lastIdCerveza != 0){
 			array_push($litrosXcervezaDTO, $cervezaDTO);
+		}
 
 		//Tira una excepcion si ocurre un error con la base de datos o la query.
 		if($command->errorCode() != 0){
