@@ -240,7 +240,7 @@ class DBPedidoDAO extends SingletonAbstractDAO implements iDao{
 		return $totalCount;
 	}
 
-	function contarSinEntregados($obj){
+	function contarSinEntregados(){
 		$query = 'SELECT COUNT(*) FROM '.$this->table.' WHERE estado != 2';
 		
 		$pdo = new Connection();
