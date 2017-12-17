@@ -139,7 +139,7 @@ class PedidoController{
 		$cervezas = array();
 		$cliente='';
 		$sucursal='';
-	    $totalCount=$this->datosPedido->contar();
+	    $totalCount=$this->datosPedido->contarSinEntregados();
 	    if($totalCount>0){
 	    	$countPages = $totalCount / PAGINATION;
 	    	$countPages = ceil($countPages);
