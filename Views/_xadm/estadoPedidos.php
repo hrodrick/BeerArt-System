@@ -37,20 +37,27 @@
                          <td width="20%" class="t_blanco"><?= $valuePedidos->getCliente()->getEmail();?></td>
                          <td width="20%" class="t_blanco"><?= $valuePedidos->getSucursal()->getDomicilio();?></td>
                          <td width="15%" class="t_negro">
+                          <?php 
+                              var_dump($valuePedidos->getEstado()); //TODO remove this line
+                           ?>
                             <form action="<?=DIR?>Pedido/cambioEstado" method="post">
-                              <select name='estado' onChange='submit();'>
+                              <select name="estado" onChange="submit();">
                                 <?php
                                   $selected='selected';
-                                  foreach ($estado as $key => $value) {
-                                    $selected=($key==$valuePedidos->getEstado())?'selected':'';
-                                    $desabilitado='';
-                                    if($_SESSION['usuario']->getIdRol()->getPermisos()!=1){
-                                      $desabilitado=($key<$valuePedidos->getEstado())?'disabled':'';
+                                  foreach ($estado as $est) {
+
+                                    $selected = ( $est == $valuePedidos->getEstado() ) ? 'selected' : '';
+                                    $desabilitado = '';
+                                    
+                                    if( $_SESSION['usuario']->getIdRol() != 1){
+
+                                      $desabilitado = ( $est < $valuePedidos->getEstado() ) ? 'disabled' : '';
                                     }
                                  ?>
-                                      <option value='<?=$key?>' <?=$desabilitado;?> <?=$selected;?>><?= $estado[$key];?></option>
+                                      <option value="<?=$est?>" <?=$desabilitado;?> <?=$selected;?> > <?= $estado[$est];?> </option>
 
                                 <?php
+
                                   }
                                 ?>
                                   <input type="hidden" name="idPedido" value="<?=$valuePedidos->getId()?>">
