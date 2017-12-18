@@ -1,6 +1,7 @@
     <?php
     $i = rand(1,9);
     $imagen="0".$i.".jpg";
+    $fecha = date(FECHA,strtotime($fecha));
     ?>
     <body background="<?=DIR.URL_IMG.$imagen;?>">    
         <div id="wrapper">
@@ -95,7 +96,9 @@
           </div>   
           <!-- Paginacion usa la variable destino para los links   -->
           <?php
-          $destino='Pedido/pedidosPorFecha/'.date("Y-m-d",strtotime($valuePedidos->getFecha())).'/';
+          if(count($pedidos)>0){
+              $destino='Pedido/pedidosPorFecha/'.date("Y-m-d",strtotime($valuePedidos->getFecha())).'/';
+          }
           require('Views/_xadm/paginacion.php');
           ;?>          
             </div> <!-- /container -->
