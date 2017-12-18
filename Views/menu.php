@@ -28,12 +28,12 @@
                                         <h4>Datos del Usuario</h4>
                                    </div>
                                    <div class="modal-body">
-                                        <h4><?php echo $_SESSION['usuario']->getNombre().' '.$_SESSION['usuario']->getApellido();?></h4>
-                                        <h5><?php echo $_SESSION['usuario']->getDomicilio();?></h5>
-                                        <h5><?php echo $_SESSION['usuario']->getLocalidad();?></h5>                                                          
-                                        <h5><?php echo $_SESSION['usuario']->getTelefono();?></h5>                                                         
-                                        <h5><?php echo $_SESSION['usuario']->getDni();?></h5>                                                      
-                                        <h5><?php echo $_SESSION['usuario']->getEmail();?></h5>                                                             
+                                        <h4 align="center"><?php echo $_SESSION['usuario']->getNombre().' '.$_SESSION['usuario']->getApellido();?></h4>
+                                        <h5>Domicilio: <?php echo $_SESSION['usuario']->getDomicilio();?></h5>
+                                        <h5>Localidad: <?php echo $_SESSION['usuario']->getLocalidad();?></h5>                                                          
+                                        <h5>Telefono: <?php echo $_SESSION['usuario']->getTelefono();?></h5>                                                         
+                                        <h5>DNI: <?php echo $_SESSION['usuario']->getDni();?></h5>                                                      
+                                        <h5>E-Mail: <?php echo $_SESSION['usuario']->getEmail();?></h5>                                                            
                                    </div>
                                    <div class="modal-footer">                        
                                         <a href="<?=DIR?>Front/edit/<?= urlencode(base64_encode($_SESSION['usuario']->getId()));?>" data-toggle="tooltip" title="Modificar Mis Datos" class="btn btn-primary">Modificar</a>
