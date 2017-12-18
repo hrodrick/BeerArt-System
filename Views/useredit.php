@@ -61,7 +61,7 @@
                               </div>
 
                               <div class="col-xs-12 text-center">                  
-                                  <input type="hidden" name="idRol" value=0>
+                                  <input type="hidden" name="idRol" value="<?=$obj->getIdRol()?>">
                                   <input type="hidden" name="id" value="<?=$obj->getId()?>">
                                   <input type="hidden" name="standBy" value="<?=$obj->getStandBy()?>">
                                   <input type="hidden" name="contra" value="<?=$obj->getPassword()?>">
