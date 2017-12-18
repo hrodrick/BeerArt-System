@@ -72,7 +72,7 @@ class PedidoController{
 		if($lugar==1){
 			foreach ($_SESSION['sucursales'] as $key => $value) {
 				$dir2=$value->getDomicilio().', '.$value->getLocalidad();
-				//$distancia=$this->getDistance($dom,$dir2,'K');
+				$distancia=$this->getDistance($dom,$dir2,'K');
 				$distancia=0;
 				if($key==0){
 					$menor=$distancia;
