@@ -17,7 +17,7 @@
 
                       <div class="input-group col-xs-3 div-center">
                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar text-warning"></i></span>
-                           <input type="date" class="form-control input-lg" value='<?= date('Y-m-d')?>' name="fecha" required autofocus>
+                           <input type="date" class="form-control input-lg" value='<?= date('Y-m-d')?>' max='<?= date('Y-m-d')?>' name="fecha" required autofocus>
                       </div>
 
                       <p>&nbsp;</p>
